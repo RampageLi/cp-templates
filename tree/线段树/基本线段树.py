@@ -86,19 +86,20 @@ class BasicSegmentTree:
         Returns:
             int: 查询结果
         """
-        if l >= L and r <= R:
+        if l == L and r == R:
             return self.tree[o]
         mid = (l + r) // 2
 
         if R <= mid:
             # 查询区间全在左子树
             return self.query(2 * o, l, mid, L, R)
-        if L > mid:
+        elif L > mid:
             # 查询区间全在右子树
             return self.query(2 * o + 1, mid + 1, r, L, R)
         else:
             # 查询区间覆盖左右子树
-            return self._func(self.query(2 * o, l, mid, L, R), self.query(2 * o + 1, mid + 1, r, L, R))
+            return self._func(self.query(2 * o, l, mid, L, mid),
+                              self.query(2 * o + 1, mid + 1, r, mid + 1, R))
 
 
 # 2286. 以组为单位订音乐会的门票
