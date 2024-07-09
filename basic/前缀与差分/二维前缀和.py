@@ -1,5 +1,8 @@
 from typing import List
-class NumMatrix:
+
+
+class PreSum2D:
+    """二维前缀和（矩阵不可变）"""
     def __init__(self, matrix: List[List[int]]):
         """初始化二维前缀和数组"""
         m, n = len(matrix), len(matrix[0])
